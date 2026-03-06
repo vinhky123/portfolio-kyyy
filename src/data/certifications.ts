@@ -9,15 +9,15 @@ export interface Certification {
 
 export const certifications: Certification[] = [
   {
-    id: 'aws-cloud-practitioner',
-    name: 'AWS Certified Cloud Practitioner',
-    issuer: 'Amazon Web Services',
+    id: 'toeic',
+    name: 'TOEIC 875/990',
+    issuer: 'ETS',
     date: '2025',
     credentialUrl: '#',
   },
   {
-    id: 'aws-solutions-architect',
-    name: 'AWS Certified Solutions Architect – Associate',
+    id: 'aws-data-engineer-associate',
+    name: 'AWS Certified Data Engineer – Associate',
     issuer: 'Amazon Web Services',
     date: '2025',
     credentialUrl: '#',
