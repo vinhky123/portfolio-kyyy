@@ -13,7 +13,6 @@ const navItems = [
   { id: 'experience', key: 'experience' },
   { id: 'education', key: 'education' },
   { id: 'certifications', key: 'certifications' },
-  { id: 'contact', key: 'contact' },
 ];
 
 export default function Navbar() {

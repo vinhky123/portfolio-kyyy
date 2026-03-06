@@ -1,16 +1,12 @@
 import {
   SiPython,
-  SiPostgresql,
-  SiOpenjdk,
+  SiSqlite,
   SiGnubash,
   SiApachespark,
   SiApachekafka,
   SiApacheairflow,
   SiDbt,
-  SiDatabricks,
-  SiMysql,
-  SiMongodb,
-  SiRedis,
+  SiSnowflake,
   SiDocker,
   SiGit,
   SiLinux,
@@ -18,27 +14,25 @@ import {
   SiGithubactions,
 } from 'react-icons/si';
 import { FaAws } from 'react-icons/fa';
+import { MdOutlineLanguage } from 'react-icons/md';
 import type { IconType } from 'react-icons';
 
 const iconMap: Record<string, IconType> = {
   SiPython,
-  SiPostgresql,
-  SiOpenjdk,
+  SiSqlite,
   SiGnubash,
   SiApachespark,
   SiApachekafka,
   SiApacheairflow,
   SiDbt,
-  SiDatabricks,
-  SiMysql,
-  SiMongodb,
-  SiRedis,
+  SiSnowflake,
   SiDocker,
   SiGit,
   SiLinux,
   SiTerraform,
   SiGithubactions,
   FaAws,
+  MdOutlineLanguage,
 };
 
 interface SkillIconProps {
@@ -47,7 +41,6 @@ interface SkillIconProps {
 }
 
 export default function SkillIcon({ iconName, className = '' }: SkillIconProps) {
-  const Icon = iconMap[iconName];
-  if (!Icon) return <FaAws className={className} />;
+  const Icon = iconMap[iconName] ?? FaAws;
   return <Icon className={className} />;
 }

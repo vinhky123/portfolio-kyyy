@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { GraduationCap } from 'lucide-react';
+import { GraduationCap, Award } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 import { educations } from '../../data/education';
 
@@ -41,9 +41,17 @@ export default function Education() {
                     {edu.startDate} — {edu.endDate}
                   </p>
                   {(isVi ? edu.descriptionVi : edu.description) && (
-                    <p className="mt-2 text-sm text-dark-600 dark:text-dark-300">
+                    <p className="mt-1 text-sm text-dark-600 dark:text-dark-300">
                       {isVi ? edu.descriptionVi : edu.description}
                     </p>
+                  )}
+                  {(isVi ? edu.gradeVi : edu.grade) && (
+                    <div className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-primary-400/30 bg-primary-500/10 px-3 py-1">
+                      <Award size={14} className="text-primary-500" />
+                      <span className="text-xs font-semibold text-primary-600 dark:text-primary-400">
+                        {isVi ? edu.gradeVi : edu.grade}
+                      </span>
+                    </div>
                   )}
                 </div>
               </div>

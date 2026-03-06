@@ -7,6 +7,7 @@ export interface SkillCategory {
   category: string;
   categoryVi: string;
   skills: Skill[];
+  hasMore?: boolean;
 }
 
 export const skillCategories: SkillCategory[] = [
@@ -15,9 +16,9 @@ export const skillCategories: SkillCategory[] = [
     categoryVi: 'Ngôn ngữ',
     skills: [
       { name: 'Python', icon: 'SiPython' },
-      { name: 'SQL', icon: 'SiPostgresql' },
-      { name: 'Java', icon: 'SiOpenjdk' },
+      { name: 'SQL', icon: 'SiSqlite' },
       { name: 'Bash/Shell', icon: 'SiGnubash' },
+      { name: 'English (Professional)', icon: 'MdOutlineLanguage' },
     ],
   },
   {
@@ -29,8 +30,9 @@ export const skillCategories: SkillCategory[] = [
       { name: 'AWS Glue', icon: 'FaAws' },
       { name: 'AWS Redshift', icon: 'FaAws' },
       { name: 'AWS EC2', icon: 'FaAws' },
-      { name: 'AWS CloudWatch', icon: 'FaAws' },
+      { name: 'AWS DynamoDB', icon: 'FaAws' },
     ],
+    hasMore: true,
   },
   {
     category: 'Data Engineering',
@@ -39,18 +41,8 @@ export const skillCategories: SkillCategory[] = [
       { name: 'Apache Spark', icon: 'SiApachespark' },
       { name: 'Apache Kafka', icon: 'SiApachekafka' },
       { name: 'Apache Airflow', icon: 'SiApacheairflow' },
+      { name: 'Snowflake', icon: 'SiSnowflake' },
       { name: 'dbt', icon: 'SiDbt' },
-      { name: 'Databricks', icon: 'SiDatabricks' },
-    ],
-  },
-  {
-    category: 'Databases',
-    categoryVi: 'Cơ sở dữ liệu',
-    skills: [
-      { name: 'PostgreSQL', icon: 'SiPostgresql' },
-      { name: 'MySQL', icon: 'SiMysql' },
-      { name: 'MongoDB', icon: 'SiMongodb' },
-      { name: 'Redis', icon: 'SiRedis' },
     ],
   },
   {

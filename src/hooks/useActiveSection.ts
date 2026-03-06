@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'education', 'certifications', 'contact'];
+const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'education', 'certifications'];
 
 export function useActiveSection() {
   const [activeSection, setActiveSection] = useState('hero');

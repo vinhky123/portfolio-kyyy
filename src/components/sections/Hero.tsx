@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
+import { Github, Linkedin, Mail, ChevronDown, FileText } from 'lucide-react';
 import { personal } from '../../data/personal';
 
 function useTypingEffect(texts: string[], typingSpeed = 80, deletingSpeed = 40, pauseTime = 2000) {
@@ -127,12 +127,15 @@ export default function Hero() {
           >
             {t('hero.cta_projects')}
           </button>
-          <button
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-            className="rounded-xl border border-dark-300 px-6 py-3 font-medium text-dark-700 transition-all hover:border-primary-500 hover:text-primary-500 hover:-translate-y-0.5 dark:border-dark-600 dark:text-dark-300 dark:hover:border-primary-500 dark:hover:text-primary-500"
+          <a
+            href={personal.cvLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl border border-dark-300 px-6 py-3 font-medium text-dark-700 transition-all hover:border-primary-500 hover:text-primary-500 hover:-translate-y-0.5 dark:border-dark-600 dark:text-dark-300 dark:hover:border-primary-500 dark:hover:text-primary-500"
           >
+            <FileText size={18} />
             {t('hero.cta_cv')}
-          </button>
+          </a>
         </motion.div>
 
         <motion.div

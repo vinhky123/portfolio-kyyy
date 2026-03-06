@@ -7,7 +7,7 @@ export interface Project {
   tech: string[];
   github?: string;
   demo?: string;
-  image?: string;
+  architectureImage?: string;
   featured: boolean;
 }
 
@@ -22,6 +22,7 @@ export const projects: Project[] = [
       'Data pipeline thời gian thực sử dụng Apache Kafka để streaming, Apache Spark để xử lý, và AWS S3 để lưu trữ. Bao gồm giám sát tự động với CloudWatch.',
     tech: ['Python', 'Apache Kafka', 'Apache Spark', 'AWS S3', 'Docker'],
     github: 'https://github.com/vinhky123',
+    // architectureImage: '/images/arch-pipeline.webp',
     featured: true,
   },
   {
@@ -32,8 +33,9 @@ export const projects: Project[] = [
       'A modular ETL framework built with Apache Airflow and dbt for orchestrating data transformations. Supports incremental loading and data quality checks.',
     descriptionVi:
       'Framework ETL module hóa sử dụng Apache Airflow và dbt để điều phối các phép biến đổi dữ liệu. Hỗ trợ tải incremental và kiểm tra chất lượng dữ liệu.',
-    tech: ['Python', 'Apache Airflow', 'dbt', 'PostgreSQL', 'AWS'],
+    tech: ['Python', 'Apache Airflow', 'dbt', 'Snowflake', 'AWS'],
     github: 'https://github.com/vinhky123',
+    // architectureImage: '/images/arch-etl.webp',
     featured: true,
   },
   {
@@ -46,6 +48,7 @@ export const projects: Project[] = [
       'Thiết kế và triển khai data warehouse trên AWS Redshift với tự động hóa ingestion dữ liệu từ nhiều nguồn và tích hợp BI dashboard.',
     tech: ['AWS Redshift', 'AWS Glue', 'Python', 'SQL', 'Terraform'],
     github: 'https://github.com/vinhky123',
+    // architectureImage: '/images/arch-warehouse.webp',
     featured: true,
   },
   {

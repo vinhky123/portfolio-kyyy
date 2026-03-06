@@ -8,8 +8,6 @@ import Projects from './components/sections/Projects';
 import Experience from './components/sections/Experience';
 import Education from './components/sections/Education';
 import Certifications from './components/sections/Certifications';
-import Contact from './components/sections/Contact';
-
 export default function App() {
   return (
     <div className="min-h-screen bg-white text-dark-900 dark:bg-dark-950 dark:text-dark-100">
@@ -22,7 +20,6 @@ export default function App() {
         <Experience />
         <Education />
         <Certifications />
-        <Contact />
       </main>
       <Footer />
       <ScrollToTop />
