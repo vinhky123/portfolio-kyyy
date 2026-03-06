@@ -1,0 +1,70 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "about": "Giới thiệu",
+    "skills": "Kỹ năng",
+    "projects": "Dự án",
+    "experience": "Kinh nghiệm",
+    "education": "Học vấn",
+    "certifications": "Chứng chỉ",
+    "contact": "Liên hệ"
+  },
+  "hero": {
+    "greeting": "Xin chào, tôi là",
+    "name": "Lê Vĩnh Kỳ",
+    "roles": ["Data Engineer", "Cloud Enthusiast", "AWS Practitioner"],
+    "description": "Xây dựng data pipeline và giải pháp cloud. Đam mê biến dữ liệu thô thành thông tin hữu ích.",
+    "cta_projects": "Xem dự án",
+    "cta_cv": "Tải CV"
+  },
+  "about": {
+    "title": "Về tôi",
+    "subtitle": "Tìm hiểu thêm về tôi",
+    "description": "Tôi là Data Engineer tại FPT Software với niềm đam mê xây dựng hạ tầng dữ liệu và giải pháp cloud. Tôi chuyên thiết kế và triển khai các data pipeline, làm việc với AWS cloud services, và chuyển đổi dữ liệu phức tạp thành insight có ý nghĩa cho doanh nghiệp.",
+    "description2": "Với nền tảng vững chắc từ Trường Đại học Công nghệ Thông tin (UIT), tôi kết hợp kiến thức học thuật với kinh nghiệm thực tế để mang lại các giải pháp dữ liệu hiệu quả.",
+    "location": "Việt Nam",
+    "company": "FPT Software",
+    "role": "Data Engineer",
+    "focus": "Cloud & Data"
+  },
+  "skills": {
+    "title": "Kỹ năng & Công nghệ",
+    "subtitle": "Các công nghệ tôi sử dụng"
+  },
+  "projects": {
+    "title": "Dự án",
+    "subtitle": "Những gì tôi đã xây dựng",
+    "view_code": "Mã nguồn",
+    "view_demo": "Xem demo"
+  },
+  "experience": {
+    "title": "Kinh nghiệm",
+    "subtitle": "Hành trình nghề nghiệp",
+    "present": "Hiện tại"
+  },
+  "education": {
+    "title": "Học vấn",
+    "subtitle": "Nền tảng học thuật"
+  },
+  "certifications": {
+    "title": "Chứng chỉ",
+    "subtitle": "Chứng nhận chuyên môn",
+    "view_credential": "Xem chứng chỉ"
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "subtitle": "Hãy cùng hợp tác",
+    "description": "Tôi hiện đang tìm kiếm cơ hội mới và sự hợp tác. Dù bạn có câu hỏi hay chỉ muốn chào hỏi, hãy liên hệ với tôi!",
+    "name": "Tên của bạn",
+    "email": "Email của bạn",
+    "message": "Tin nhắn",
+    "send": "Gửi tin nhắn",
+    "sending": "Đang gửi...",
+    "success": "Tin nhắn đã được gửi thành công!",
+    "error": "Đã có lỗi xảy ra. Vui lòng thử lại."
+  },
+  "footer": {
+    "built_with": "Xây dựng với React & Tailwind CSS",
+    "rights": "Bản quyền được bảo lưu."
+  }
+}
