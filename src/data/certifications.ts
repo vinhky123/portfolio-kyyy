@@ -10,7 +10,7 @@ export interface Certification {
 export const certifications: Certification[] = [
   {
     id: 'toeic',
-    name: 'TOEIC 875/990',
+    name: 'TOEIC Certificate Reading and Listening (875/990)',
     issuer: 'ETS',
     date: '2025',
     credentialUrl: '#',
