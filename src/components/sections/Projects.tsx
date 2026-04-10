@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Github, ExternalLink, Network } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 import { projects } from '../../data/projects';
+import { fadeUp, staggerContainer, viewport } from '../../lib/animations';
 
 export default function Projects() {
   const { t, i18n } = useTranslation();
@@ -13,25 +14,28 @@ export default function Projects() {
       <div className="mx-auto max-w-6xl px-4">
         <SectionHeading title={t('projects.title')} subtitle={t('projects.subtitle')} />
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((project, i) => {
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          className="grid gap-6 md:grid-cols-2"
+        >
+          {projects.map((project) => {
             const hasArch = Boolean(project.architectureImage);
             return (
               <motion.article
                 key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{ y: -4 }}
-                className={`group relative overflow-hidden rounded-2xl border border-dark-200 bg-white shadow-sm transition-shadow hover:shadow-xl dark:border-dark-700 dark:bg-dark-800/50 ${
+                variants={fadeUp}
+                whileHover={{ y: -5 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                className={`group relative overflow-hidden rounded-2xl border border-dark-200 bg-white shadow-sm hover:shadow-xl dark:border-dark-700 dark:bg-dark-800/50 ${
                   hasArch ? 'md:col-span-2' : ''
                 }`}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
                 <div className={`relative p-6 ${hasArch ? 'md:grid md:grid-cols-2 md:gap-6' : ''}`}>
-                  {/* Text content */}
                   <div>
                     {project.featured && (
                       <span className="mb-3 inline-block rounded-full bg-primary-500/10 px-3 py-1 text-xs font-medium text-primary-500">
@@ -84,7 +88,6 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Architecture diagram */}
                   {hasArch && (
                     <div className="mt-4 flex items-start md:mt-0">
                       <div className="w-full overflow-hidden rounded-xl border border-dark-200 bg-white p-2 dark:border-dark-600">
@@ -108,7 +111,7 @@ export default function Projects() {
               </motion.article>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { GraduationCap, Award } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 import { educations } from '../../data/education';
+import { fadeUp, staggerContainer, viewport } from '../../lib/animations';
 
 export default function Education() {
   const { t, i18n } = useTranslation();
@@ -13,22 +14,31 @@ export default function Education() {
       <div className="mx-auto max-w-4xl px-4">
         <SectionHeading title={t('education.title')} subtitle={t('education.subtitle')} />
 
-        <div className="space-y-8">
-          {educations.map((edu, i) => (
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          className="space-y-8"
+        >
+          {educations.map((edu) => (
             <motion.div
               key={edu.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
+              variants={fadeUp}
+              whileHover={{ y: -3 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
               className="relative overflow-hidden rounded-2xl border border-dark-200 bg-white p-6 shadow-sm dark:border-dark-700 dark:bg-dark-800/50"
             >
               <div className="absolute top-0 right-0 h-32 w-32 translate-x-8 -translate-y-8 rounded-full bg-primary-500/5" />
 
               <div className="relative flex items-start gap-4">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary-500/10">
+                <motion.div
+                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary-500/10"
+                  whileHover={{ rotate: [0, -8, 8, 0] }}
+                  transition={{ duration: 0.5 }}
+                >
                   <GraduationCap size={28} className="text-primary-500" />
-                </div>
+                </motion.div>
 
                 <div className="flex-1">
                   <h3 className="text-lg font-bold text-dark-900 dark:text-white">
@@ -57,7 +67,7 @@ export default function Education() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

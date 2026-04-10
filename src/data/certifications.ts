@@ -16,10 +16,17 @@ export const certifications: Certification[] = [
     credentialUrl: '#',
   },
   {
+    id: 'aws-ai-practitioner',
+    name: 'AWS AI Practitioner',
+    issuer: 'Amazon Web Services',
+    date: '2026',
+    credentialUrl: '#',
+  },
+  {
     id: 'aws-data-engineer-associate',
     name: 'AWS Certified Data Engineer – Associate',
     issuer: 'Amazon Web Services',
-    date: '2025',
+    date: '2026',
     credentialUrl: '#',
   },
 ];

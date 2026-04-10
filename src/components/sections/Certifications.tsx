@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Award, ExternalLink } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
 import { certifications } from '../../data/certifications';
+import { scaleUp, staggerContainer, viewport } from '../../lib/animations';
 
 export default function Certifications() {
   const { t } = useTranslation();
@@ -12,20 +13,28 @@ export default function Certifications() {
       <div className="mx-auto max-w-4xl px-4">
         <SectionHeading title={t('certifications.title')} subtitle={t('certifications.subtitle')} />
 
-        <div className="grid gap-6 sm:grid-cols-2">
-          {certifications.map((cert, i) => (
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          className="grid gap-6 sm:grid-cols-2"
+        >
+          {certifications.map((cert) => (
             <motion.div
               key={cert.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ y: -4, scale: 1.02 }}
-              className="group rounded-2xl border border-dark-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-lg dark:border-dark-700 dark:bg-dark-800/50"
+              variants={scaleUp}
+              whileHover={{ y: -5, scale: 1.02 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+              className="group rounded-2xl border border-dark-200 bg-white p-6 shadow-sm hover:shadow-lg dark:border-dark-700 dark:bg-dark-800/50"
             >
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500/20 to-primary-700/20">
+              <motion.div
+                className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500/20 to-primary-700/20"
+                whileHover={{ rotate: [0, -10, 10, 0] }}
+                transition={{ duration: 0.5 }}
+              >
                 <Award size={28} className="text-primary-500" />
-              </div>
+              </motion.div>
 
               <h3 className="mb-1 text-lg font-bold text-dark-900 dark:text-white">
                 {cert.name}
@@ -46,7 +55,7 @@ export default function Certifications() {
               )}
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,8 +1,9 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Github, Linkedin, Mail, ChevronDown, FileText } from 'lucide-react';
 import { personal } from '../../data/personal';
+import { easing } from '../../lib/animations';
 
 function useTypingEffect(texts: string[], typingSpeed = 80, deletingSpeed = 40, pauseTime = 2000) {
   const [displayText, setDisplayText] = useState('');
@@ -11,14 +12,12 @@ function useTypingEffect(texts: string[], typingSpeed = 80, deletingSpeed = 40, 
 
   const tick = useCallback(() => {
     const currentFullText = texts[textIndex];
-
     if (!isDeleting) {
       if (displayText.length < currentFullText.length) {
         return { next: currentFullText.slice(0, displayText.length + 1), delay: typingSpeed };
       }
       return { next: displayText, delay: pauseTime, startDeleting: true };
     }
-
     if (displayText.length > 0) {
       return { next: currentFullText.slice(0, displayText.length - 1), delay: deletingSpeed };
     }
@@ -47,6 +46,22 @@ export default function Hero() {
   const typedText = useTypingEffect(roles);
   const name = i18n.language === 'vi' ? personal.nameVi : personal.name;
 
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+
+  // Parallax: content drifts up and fades as user scrolls away from hero
+  const rawY = useTransform(scrollYProgress, [0, 1], ['0%', '22%']);
+  const rawOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
+  const contentY = useSpring(rawY, { stiffness: 80, damping: 25 });
+  const contentOpacity = useSpring(rawOpacity, { stiffness: 80, damping: 25 });
+
+  // Particles move at a slower rate (depth effect)
+  const rawParticleY = useTransform(scrollYProgress, [0, 1], ['0%', '10%']);
+  const particleY = useSpring(rawParticleY, { stiffness: 60, damping: 25 });
+
   const particles = useMemo(
     () =>
       Array.from({ length: 40 }, (_, i) => ({
@@ -60,8 +75,9 @@ export default function Hero() {
   );
 
   return (
-    <section id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      <div className="pointer-events-none absolute inset-0">
+    <section ref={heroRef} id="hero" className="relative flex min-h-screen items-center justify-center overflow-hidden">
+      {/* Animated background — moves slower than content (depth) */}
+      <motion.div className="pointer-events-none absolute inset-0" style={{ y: particleY }}>
         <div className="absolute inset-0 bg-grid" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.08),transparent_70%)]" />
         {particles.map((p) => (
@@ -73,22 +89,26 @@ export default function Hero() {
             transition={{ duration: p.duration, repeat: Infinity, delay: p.delay }}
           />
         ))}
-      </div>
+      </motion.div>
 
-      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center">
+      {/* Main content — parallax on scroll */}
+      <motion.div
+        style={{ y: contentY, opacity: contentOpacity }}
+        className="relative z-10 mx-auto max-w-4xl px-4 text-center"
+      >
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.55, ease: easing, delay: 0.2 }}
           className="mb-4 text-lg font-medium text-primary-500"
         >
           {t('hero.greeting')}
         </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.55, ease: easing, delay: 0.35 }}
           className="mb-4 text-5xl font-extrabold text-dark-900 md:text-7xl dark:text-white"
         >
           {name}
@@ -97,7 +117,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ duration: 0.55, ease: easing, delay: 0.5 }}
           className="mb-6 flex h-10 items-center justify-center"
         >
           <span className="text-xl font-medium text-dark-500 md:text-2xl dark:text-dark-300">
@@ -109,7 +129,7 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.8 }}
+          transition={{ duration: 0.55, ease: easing, delay: 0.65 }}
           className="mx-auto mb-8 max-w-2xl text-dark-500 dark:text-dark-400"
         >
           {t('hero.description')}
@@ -118,12 +138,12 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
+          transition={{ duration: 0.55, ease: easing, delay: 0.8 }}
           className="mb-10 flex flex-wrap justify-center gap-4"
         >
           <button
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            className="rounded-xl bg-primary-500 px-6 py-3 font-medium text-white shadow-lg shadow-primary-500/25 transition-all hover:bg-primary-600 hover:shadow-xl hover:shadow-primary-500/30 hover:-translate-y-0.5"
+            className="rounded-xl bg-primary-500 px-6 py-3 font-medium text-white shadow-lg shadow-primary-500/25 transition-all hover:-translate-y-0.5 hover:bg-primary-600 hover:shadow-xl hover:shadow-primary-500/30"
           >
             {t('hero.cta_projects')}
           </button>
@@ -131,7 +151,7 @@ export default function Hero() {
             href={personal.cvLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-dark-300 px-6 py-3 font-medium text-dark-700 transition-all hover:border-primary-500 hover:text-primary-500 hover:-translate-y-0.5 dark:border-dark-600 dark:text-dark-300 dark:hover:border-primary-500 dark:hover:text-primary-500"
+            className="inline-flex items-center gap-2 rounded-xl border border-dark-300 px-6 py-3 font-medium text-dark-700 transition-all hover:-translate-y-0.5 hover:border-primary-500 hover:text-primary-500 dark:border-dark-600 dark:text-dark-300 dark:hover:border-primary-500 dark:hover:text-primary-500"
           >
             <FileText size={18} />
             {t('hero.cta_cv')}
@@ -141,7 +161,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.2 }}
+          transition={{ duration: 0.55, ease: easing, delay: 0.95 }}
           className="flex justify-center gap-5"
         >
           {[
@@ -154,25 +174,22 @@ export default function Hero() {
               href={href}
               target={label !== 'Email' ? '_blank' : undefined}
               rel="noopener noreferrer"
-              className="rounded-full border border-dark-200 p-3 text-dark-500 transition-all hover:border-primary-500 hover:text-primary-500 hover:shadow-lg hover:-translate-y-1 dark:border-dark-700 dark:text-dark-400 dark:hover:border-primary-500"
+              className="rounded-full border border-dark-200 p-3 text-dark-500 transition-all hover:-translate-y-1 hover:border-primary-500 hover:text-primary-500 hover:shadow-lg dark:border-dark-700 dark:text-dark-400 dark:hover:border-primary-500"
               aria-label={label}
             >
               <Icon size={20} />
             </a>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
+        transition={{ delay: 1.4, duration: 0.6 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
+        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}>
           <ChevronDown className="text-dark-400 dark:text-dark-500" size={24} />
         </motion.div>
       </motion.div>

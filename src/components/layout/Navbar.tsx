@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { Menu, X, Sun, Moon, Languages } from 'lucide-react';
 import { useActiveSection } from '../../hooks/useActiveSection';
@@ -21,6 +21,9 @@ export default function Navbar() {
   const { isDark, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 200, damping: 40, restDelta: 0.001 });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -46,7 +49,7 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
       className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
         scrolled
           ? 'glass border-b border-dark-200 bg-white/80 shadow-lg dark:border-dark-800 dark:bg-dark-950/80'
@@ -76,7 +79,7 @@ export default function Navbar() {
                 <motion.div
                   layoutId="activeNav"
                   className="absolute inset-0 rounded-lg bg-primary-500/10"
-                  transition={{ type: 'spring', duration: 0.5 }}
+                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                 />
               )}
               <span className="relative z-10">{t(`nav.${item.key}`)}</span>
@@ -112,13 +115,19 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Scroll progress bar */}
+      <motion.div
+        className="absolute bottom-0 left-0 h-0.5 w-full origin-left bg-gradient-to-r from-primary-400 to-primary-600"
+        style={{ scaleX }}
+      />
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
             className="glass overflow-hidden border-t border-dark-200 bg-white/95 md:hidden dark:border-dark-800 dark:bg-dark-950/95"
           >
             <div className="space-y-1 px-4 py-3">
