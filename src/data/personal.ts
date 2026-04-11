@@ -1,6 +1,7 @@
 export const personal = {
   name: 'Le Vinh Ky',
   nameVi: 'Lê Vĩnh Kỳ',
+  profileImage: '/profile.jpg',
   email: 'vinhkyle123@gmail.com',
   github: 'https://github.com/vinhky123',
   linkedin: 'https://www.linkedin.com/in/levinhky-uit/',

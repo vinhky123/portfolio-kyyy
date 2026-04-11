@@ -96,6 +96,23 @@ export default function Hero() {
         style={{ y: contentY, opacity: contentOpacity }}
         className="relative z-10 mx-auto max-w-4xl px-4 text-center"
       >
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.55, ease: easing, delay: 0.1 }}
+          className="mb-6 flex justify-center"
+        >
+          <div className="ring-4 ring-primary-500/20 ring-offset-4 ring-offset-white dark:ring-offset-dark-900">
+            <img
+              src={personal.profileImage}
+              alt=""
+              width={128}
+              height={128}
+              className="h-32 w-32 rounded-full object-cover object-[center_20%] shadow-lg"
+            />
+          </div>
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

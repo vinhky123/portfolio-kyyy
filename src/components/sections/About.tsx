@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { MapPin, Building2, Briefcase, Target } from 'lucide-react';
 import SectionHeading from '../ui/SectionHeading';
+import { personal } from '../../data/personal';
 import { fadeLeft, fadeRight, fadeUp, staggerContainer, viewport } from '../../lib/animations';
 
 const infoItems = [
@@ -30,13 +31,15 @@ export default function About() {
           >
             <div className="relative">
               <motion.div
-                className="h-72 w-72 overflow-hidden rounded-2xl border-2 border-dark-200 bg-gradient-to-br from-primary-500/20 to-primary-700/20 dark:border-dark-700"
+                className="h-72 w-72 overflow-hidden rounded-2xl border-2 border-dark-200 bg-dark-100 dark:border-dark-700 dark:bg-dark-800"
                 whileHover={{ scale: 1.02 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 25 }}
               >
-                <div className="flex h-full items-center justify-center">
-                  <span className="gradient-text text-7xl font-bold">VK</span>
-                </div>
+                <img
+                  src={personal.profileImage}
+                  alt={personal.name}
+                  className="h-full w-full object-cover object-[center_20%]"
+                />
               </motion.div>
               <motion.div
                 className="absolute -right-3 -bottom-3 -z-10 h-72 w-72 rounded-2xl border-2 border-primary-500/30"
