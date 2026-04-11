@@ -28,31 +28,45 @@ export default function Certifications() {
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
               className="group rounded-2xl border border-dark-200 bg-white p-6 shadow-sm hover:shadow-lg dark:border-dark-700 dark:bg-dark-800/50"
             >
-              <motion.div
-                className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500/20 to-primary-700/20"
-                whileHover={{ rotate: [0, -10, 10, 0] }}
-                transition={{ duration: 0.5 }}
-              >
-                <Award size={28} className="text-primary-500" />
-              </motion.div>
+              <div className="flex items-start gap-5">
+                {cert.badge ? (
+                  <motion.img
+                    src={cert.badge}
+                    alt={cert.name}
+                    className="h-24 w-24 shrink-0 object-contain drop-shadow-md"
+                    whileHover={{ scale: 1.08 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  />
+                ) : (
+                  <motion.div
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500/20 to-primary-700/20"
+                    whileHover={{ rotate: [0, -10, 10, 0] }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Award size={28} className="text-primary-500" />
+                  </motion.div>
+                )}
 
-              <h3 className="mb-1 text-lg font-bold text-dark-900 dark:text-white">
-                {cert.name}
-              </h3>
-              <p className="mb-1 text-sm text-primary-500">{cert.issuer}</p>
-              <p className="mb-4 text-xs text-dark-500 dark:text-dark-400">{cert.date}</p>
+                <div className="flex-1 pt-1">
+                  <h3 className="mb-1 text-lg font-bold text-dark-900 dark:text-white">
+                    {cert.name}
+                  </h3>
+                  <p className="mb-1 text-sm text-primary-500">{cert.issuer}</p>
+                  <p className="mb-3 text-xs text-dark-500 dark:text-dark-400">{cert.date}</p>
 
-              {cert.credentialUrl && cert.credentialUrl !== '#' && (
-                <a
-                  href={cert.credentialUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary-500 transition-colors hover:text-primary-600"
-                >
-                  {t('certifications.view_credential')}
-                  <ExternalLink size={14} />
-                </a>
-              )}
+                  {cert.credentialUrl && cert.credentialUrl !== '#' && (
+                    <a
+                      href={cert.credentialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-primary-500 transition-colors hover:text-primary-600"
+                    >
+                      {t('certifications.view_credential')}
+                      <ExternalLink size={14} />
+                    </a>
+                  )}
+                </div>
+              </div>
             </motion.div>
           ))}
         </motion.div>
