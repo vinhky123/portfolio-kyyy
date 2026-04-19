@@ -22,14 +22,6 @@ An end-to-end data engineering and machine learning system that:
 | **Infrastructure** | Terraform, AWS ECS Fargate, AWS MWAA |
 | **Containerization** | Docker, Docker Compose |
 
-## Portfolio Website Tech Stack
-
-- **React 19** + **TypeScript** (Vite)
-- **Tailwind CSS v4** for styling
-- **Framer Motion** for animations
-- **react-i18next** for bilingual support (EN/VI)
-- **Lucide React** + **React Icons** for icons
-
 ## Getting Started
 
 ```bash

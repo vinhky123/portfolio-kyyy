@@ -21,7 +21,6 @@ export const projects: Project[] = [
     descriptionVi:
       'Giải pháp kho dữ liệu cloud-native chuyển đổi dữ liệu hàng không phân mảnh từ 3 nguồn khác nhau thành 7 data marts sẵn sàng cho phân tích. Thiết kế và triển khai ETL pipeline hàng ngày với Apache Airflow, biến đổi PySpark trong AWS Glue để làm sạch và chuẩn hóa dữ liệu, biến đổi SQL trong Snowflake cho datasets sẵn sàng phân tích, và các workflows tự động hỗ trợ business intelligence doanh nghiệp.',
     tech: ['AWS S3', 'AWS Glue (PySpark)', 'AWS Lambda', 'AWS DynamoDB', 'AWS Redshift', 'Apache Airflow', 'Snowflake (SQL)', 'Python'],
-    github: 'https://github.com/vinhky123', // Update with actual repo if available
     featured: true,
   },
   {
@@ -33,8 +32,6 @@ export const projects: Project[] = [
     descriptionVi:
       'Hệ thống data engineering và machine learning toàn diện để giám sát giao thông thời gian thực và dự báo tốc độ dựa trên transformer tại TP.HCM. Bao gồm ETL pipeline tự động (Apache Airflow + PySpark), mô hình TimeXer transformer cho dự đoán, backend Flask REST API, và dashboard Next.js tương tác với bản đồ Leaflet. Triển khai trên AWS ECS Fargate với hạ tầng Terraform.',
     tech: ['Python', 'Flask', 'Next.js', 'Apache Airflow', 'PySpark', 'PyTorch', 'TimeXer', 'AWS ECS', 'Terraform', 'MongoDB', 'Docker'],
-    github: 'https://github.com/vinhky123/TrafficPredictor',
-    demo: 'https://traffic-predictor.vercel.app', // Update with actual URL if deployed
     featured: true,
   },
 ];
