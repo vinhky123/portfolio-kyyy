@@ -13,54 +13,29 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'data-pipeline',
-    title: 'Real-time Data Pipeline',
-    titleVi: 'Data Pipeline Thời gian thực',
+    id: 'aviation-data-warehouse',
+    title: 'Aviation Data Warehouse Pipeline',
+    titleVi: 'Kho Dữ Liệu Hàng Không - Data Pipeline',
     description:
-      'An end-to-end real-time data pipeline using Apache Kafka for streaming, Apache Spark for processing, and AWS S3 for storage. Includes automated monitoring with CloudWatch.',
+      'A cloud-native data warehouse solution that transforms fragmented aviation data from 3 heterogeneous sources into 7 production-grade analytics-ready data marts. Designed and implemented a daily ETL pipeline orchestrated by Apache Airflow, with PySpark transformations in AWS Glue for data cleaning and standardization, SQL transformations in Snowflake for analytics-ready datasets, and automated workflows enabling enterprise business intelligence.',
     descriptionVi:
-      'Data pipeline thời gian thực sử dụng Apache Kafka để streaming, Apache Spark để xử lý, và AWS S3 để lưu trữ. Bao gồm giám sát tự động với CloudWatch.',
-    tech: ['Python', 'Apache Kafka', 'Apache Spark', 'AWS S3', 'Docker'],
-    github: 'https://github.com/vinhky123',
-    // architectureImage: '/images/arch-pipeline.webp',
+      'Giải pháp kho dữ liệu cloud-native chuyển đổi dữ liệu hàng không phân mảnh từ 3 nguồn khác nhau thành 7 data marts sẵn sàng cho phân tích. Thiết kế và triển khai ETL pipeline hàng ngày với Apache Airflow, biến đổi PySpark trong AWS Glue để làm sạch và chuẩn hóa dữ liệu, biến đổi SQL trong Snowflake cho datasets sẵn sàng phân tích, và các workflows tự động hỗ trợ business intelligence doanh nghiệp.',
+    tech: ['AWS S3', 'AWS Glue (PySpark)', 'AWS Lambda', 'AWS DynamoDB', 'AWS Redshift', 'Apache Airflow', 'Snowflake (SQL)', 'Python'],
+    github: 'https://github.com/vinhky123', // Update with actual repo if available
     featured: true,
   },
   {
-    id: 'etl-framework',
-    title: 'ETL Automation Framework',
-    titleVi: 'ETL Automation Framework',
+    id: 'traffic-predictor',
+    title: 'TrafficPredictor - Real-time Traffic Forecasting',
+    titleVi: 'TrafficPredictor - Dự báo Giao thông thời gian thực',
     description:
-      'A modular ETL framework built with Apache Airflow and dbt for orchestrating data transformations. Supports incremental loading and data quality checks.',
+      'An end-to-end data engineering and ML system for real-time traffic monitoring and transformer-based speed forecasting in Ho Chi Minh City. Features an automated ETL pipeline (Apache Airflow + PySpark), TimeXer transformer model for predictions, Flask REST API backend, and an interactive Next.js dashboard with Leaflet maps. Deployed on AWS ECS Fargate with Terraform infrastructure.',
     descriptionVi:
-      'Framework ETL module hóa sử dụng Apache Airflow và dbt để điều phối các phép biến đổi dữ liệu. Hỗ trợ tải incremental và kiểm tra chất lượng dữ liệu.',
-    tech: ['Python', 'Apache Airflow', 'dbt', 'Snowflake', 'AWS'],
-    github: 'https://github.com/vinhky123',
-    // architectureImage: '/images/arch-etl.webp',
+      'Hệ thống data engineering và machine learning toàn diện để giám sát giao thông thời gian thực và dự báo tốc độ dựa trên transformer tại TP.HCM. Bao gồm ETL pipeline tự động (Apache Airflow + PySpark), mô hình TimeXer transformer cho dự đoán, backend Flask REST API, và dashboard Next.js tương tác với bản đồ Leaflet. Triển khai trên AWS ECS Fargate với hạ tầng Terraform.',
+    tech: ['Python', 'Flask', 'Next.js', 'Apache Airflow', 'PySpark', 'PyTorch', 'TimeXer', 'AWS ECS', 'Terraform', 'MongoDB', 'Docker'],
+    github: 'https://github.com/vinhky123/TrafficPredictor',
+    demo: 'https://traffic-predictor.vercel.app', // Update with actual URL if deployed
     featured: true,
-  },
-  {
-    id: 'data-warehouse',
-    title: 'Cloud Data Warehouse',
-    titleVi: 'Cloud Data Warehouse',
-    description:
-      'Designed and implemented a cloud-native data warehouse on AWS Redshift with automated data ingestion from multiple sources and BI dashboard integration.',
-    descriptionVi:
-      'Thiết kế và triển khai data warehouse trên AWS Redshift với tự động hóa ingestion dữ liệu từ nhiều nguồn và tích hợp BI dashboard.',
-    tech: ['AWS Redshift', 'AWS Glue', 'Python', 'SQL', 'Terraform'],
-    github: 'https://github.com/vinhky123',
-    // architectureImage: '/images/arch-warehouse.webp',
-    featured: true,
-  },
-  {
-    id: 'monitoring-dashboard',
-    title: 'Infrastructure Monitoring',
-    titleVi: 'Giám sát Hạ tầng',
-    description:
-      'A comprehensive monitoring solution for data infrastructure with real-time alerts, performance metrics tracking, and automated incident response.',
-    descriptionVi:
-      'Giải pháp giám sát toàn diện cho hạ tầng dữ liệu với cảnh báo thời gian thực, theo dõi metrics hiệu suất, và phản hồi sự cố tự động.',
-    tech: ['Python', 'AWS CloudWatch', 'Docker', 'Grafana'],
-    github: 'https://github.com/vinhky123',
-    featured: false,
   },
 ];
+

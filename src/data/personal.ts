@@ -8,5 +8,5 @@ export const personal = {
   cvLink: 'https://drive.google.com/drive/folders/1AVhKyLs50K2Ir3_najtZ-PwEz2qIOrOv?usp=sharing',
   location: 'Vietnam',
   company: 'FPT Software',
-  role: 'Data Engineer',
+  role: 'Data Engineer & ML Engineer',
 };
