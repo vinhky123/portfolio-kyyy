@@ -3,7 +3,6 @@ import {
   SiSqlite,
   SiGnubash,
   SiApachespark,
-  SiApachekafka,
   SiApacheairflow,
   SiDbt,
   SiSnowflake,
@@ -11,10 +10,8 @@ import {
   SiGit,
   SiLinux,
   SiTerraform,
-  SiGithubactions,
 } from 'react-icons/si';
 import { FaAws } from 'react-icons/fa';
-import { MdOutlineLanguage } from 'react-icons/md';
 import type { IconType } from 'react-icons';
 
 const iconMap: Record<string, IconType> = {
@@ -22,7 +19,6 @@ const iconMap: Record<string, IconType> = {
   SiSqlite,
   SiGnubash,
   SiApachespark,
-  SiApachekafka,
   SiApacheairflow,
   SiDbt,
   SiSnowflake,
@@ -30,9 +26,7 @@ const iconMap: Record<string, IconType> = {
   SiGit,
   SiLinux,
   SiTerraform,
-  SiGithubactions,
   FaAws,
-  MdOutlineLanguage,
 };
 
 interface SkillIconProps {
