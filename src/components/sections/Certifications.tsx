@@ -108,9 +108,9 @@ export default function Certifications() {
 
             if (isSingle) {
               return (
-                <div key={row} className="mx-auto max-w-2xl">
+                <div key={row} className="mx-auto max-w-md">
                   {rowCerts.map((cert) => (
-                    <CertCard key={cert.id} cert={cert} />
+                    <CertCard key={cert.id} cert={cert} compact />
                   ))}
                 </div>
               );
